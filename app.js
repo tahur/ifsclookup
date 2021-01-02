@@ -1,38 +1,25 @@
 const express = require("express");
-const BodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const https = require('https');
+const ejs = require('ejs');
 
 const app = express();
 
+app.set('view engine', 'ejs');  //to use EJS
+app.use(bodyParser.urlencoded({ extended: true })); //To transfer data on post request
+app.use(express.static("public")); //parse static files like css 
 
 let ifscode = "SBIN0002130"
 
 
-let url = "https://ifsc.razorpay.com/" + ifscode
-
-let bankName =;
-
-
-https.get(url, function (response) {
-    console.log(response.statusCode);
-
-    response.on("data", function (data) {
-        const ifscInfo = JSON.parse(data);
-
-        console.log(ifscInfo)
 
 
 
-
-
-
-    })
-})
 
 
 app.get("/", function (req, res) {
 
-    res.send("hello")
+    res.render("home", {})
 
 
 
@@ -41,6 +28,25 @@ app.get("/", function (req, res) {
 
 
 app.post("/", function (req, res) {
+
+    const lookupCode = req.body.lookupCode;
+
+    console.log(lookupCode)
+
+    let url = "https://ifsc.razorpay.com/" + lookupCode
+
+
+    https.get(url, function (response) {
+        console.log(response.statusCode);
+
+        response.on("data", function (data) {
+            const ifscInfo = JSON.parse(data);
+
+            console.log(ifscInfo)
+
+        })
+    })
+
 
 })
 
