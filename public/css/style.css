@@ -12,7 +12,7 @@ html,body{
 body{
   display: grid;
   place-items: center;
-  background: #dde7e7;
+  background: #EDF2F0;
   text-align: center;
 }
 .content{
