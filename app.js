@@ -20,22 +20,24 @@ let lookupCode = {};
 app.post("/", function (req, res) {
 
     lookupCode = req.body.lookupCode;
-    looup
 
-    res.redirect("/result")
+
+    res.redirect(`/${lookupCode}`)
 
 
 
 
 })
 
-app.get("/result", function (req, res) {
+app.get("/:postURL", function (req, res) {
+
+    const requestedIfsc = req.params.postURL;
 
 
 
     console.log(lookupCode)
 
-    let url = "https://ifsc.razorpay.com/" + lookupCode
+    let url = "https://ifsc.razorpay.com/" + requestedIfsc
 
 
     https.get(url, function (response) {
