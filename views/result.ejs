@@ -1,0 +1,56 @@
+<%- include("partials/header") %>
+
+    <div class="content result">
+        <div class="text heading ">
+            <%=ifscCode%>
+        </div>
+        <div class="text micr">
+            <strong>MICR:</strong>
+            <%=micrCode%>
+        </div>
+
+        <div class="text info ">
+            <strong>Bank: </strong>
+            <%=bankName%>
+        </div>
+
+        <div class="text info ">
+            <strong>Branch:</strong>
+            <%=bankBranch%>
+        </div>
+
+        <div class="text info ">
+            <strong>Address:</strong>
+            <%=bankAddress%>
+        </div>
+
+        <div class="text info ">
+            <strong>City:</strong>
+            <%=bankCity%>
+        </div>
+
+        <div class="text info ">
+            <strong>Dist:</strong>
+            <%=bankDist%>
+        </div>
+
+        <div class="text info ">
+            <strong>State:</strong>
+            <%=bankState%>
+        </div>
+
+
+        <form action="/">
+            <button type="submit">Search Again</button>
+        </form>
+
+        <div class="sign-up">
+            Buit with ❤ | Data by
+            <a href="#">Razorpay API</a>
+        </div>
+
+
+
+    </div>
+
+    <%- include("partials/footer") %>

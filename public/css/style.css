@@ -15,6 +15,10 @@ body{
   background: #EDF2F0;
   text-align: center;
 }
+
+.result{
+  text-align: left;
+}
 .content{
   width: 330px;
   padding: 40px 30px;
@@ -29,6 +33,23 @@ body{
   margin-bottom: 35px;
   color: #595959;
 }
+
+.content .info{
+  font-size: 20px;
+  font-weight: 400;
+  color: #362e2e;
+  margin-bottom: 5px;
+}
+.content .heading{
+  margin-bottom: 5px;
+
+}
+.content .micr{
+  font-size: 25px;
+  margin-bottom: 5px;
+}
+
+
 .field{
   height: 50px;
   width: 100%;
@@ -98,6 +119,8 @@ button:focus{
   color: #595959;
   font-size: 12px;
 }
+
+
 .sign-up a{
   color: #3498db;
   text-decoration: none;

@@ -9,27 +9,29 @@ app.set('view engine', 'ejs');  //to use EJS
 app.use(bodyParser.urlencoded({ extended: true })); //To transfer data on post request
 app.use(express.static("public")); //parse static files like css 
 
-let ifscode = "SBIN0002130"
-
-
-
-
-
-
 
 app.get("/", function (req, res) {
 
     res.render("home", {})
+})
+
+let lookupCode = {};
+
+app.post("/", function (req, res) {
+
+    lookupCode = req.body.lookupCode;
+    looup
+
+    res.redirect("/result")
 
 
 
 
 })
 
+app.get("/result", function (req, res) {
 
-app.post("/", function (req, res) {
 
-    const lookupCode = req.body.lookupCode;
 
     console.log(lookupCode)
 
@@ -42,7 +44,25 @@ app.post("/", function (req, res) {
         response.on("data", function (data) {
             const ifscInfo = JSON.parse(data);
 
-            console.log(ifscInfo)
+            const ifscCode = ifscInfo.IFSC
+
+            res.render("result", {
+                ifscCode: ifscCode,
+                bankName: ifscInfo.BANK,
+                micrCode: ifscInfo.MICR,
+                bankBranch: ifscInfo.BRANCH,
+                bankCity: ifscInfo.CITY,
+                bankAddress: ifscInfo.ADDRESS,
+                bankDist: ifscInfo.DISTRICT,
+                bankState: ifscInfo.STATE,
+
+
+
+
+
+            })
+
+            console.log(ifscCode)
 
         })
     })
