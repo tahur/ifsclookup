@@ -21,19 +21,12 @@ app.post("/", function (req, res) {
 
     lookupCode = req.body.lookupCode;
 
-
-    res.redirect(`/${lookupCode}`)
-
-
-
-
+    res.redirect(`${lookupCode}`)
 })
 
+
 app.get("/:postURL", function (req, res) {
-
     const requestedIfsc = req.params.postURL;
-
-
 
     console.log(lookupCode)
 
@@ -41,7 +34,11 @@ app.get("/:postURL", function (req, res) {
 
 
     https.get(url, function (response) {
-        console.log(response.statusCode);
+
+        if (response.statusCode == 404) {
+            res.render("error")
+        }
+
 
         response.on("data", function (data) {
             const ifscInfo = JSON.parse(data);
@@ -57,14 +54,7 @@ app.get("/:postURL", function (req, res) {
                 bankAddress: ifscInfo.ADDRESS,
                 bankDist: ifscInfo.DISTRICT,
                 bankState: ifscInfo.STATE,
-
-
-
-
-
             })
-
-            console.log(ifscCode)
 
         })
     })
