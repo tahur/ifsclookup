@@ -39,14 +39,22 @@
             <%=bankState%>
         </div>
 
-        <div class="text info"><strong>Avaliable Services</strong>
+        <div class="text info "><strong>Avaliable Services:</strong>
 
-            <% bankService.forEach(function(service){ %>
-                <div class="text info">
-                    <%= service %>
-                </div>
+            <div class="services">
+                <% bankServices.forEach(function(service){ %>
+                    <p>
+                        <%=service%>
+                    </p>
+                    <%})%>
 
-                <%})%>
+
+
+
+            </div>
+
+
+
 
 
         </div>
